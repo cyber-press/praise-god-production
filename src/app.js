@@ -1,31 +1,5 @@
 import { ASSETS } from "./assets.js";
 
-const launchFixes = document.createElement("style");
-launchFixes.textContent = `
-  #heroTitle {
-    overflow-wrap: normal;
-    word-break: normal;
-    hyphens: none;
-    text-wrap: balance;
-  }
-
-  @media (min-width: 600px) {
-    #heroTitle {
-      max-width: 11ch;
-      font-size: clamp(2.65rem, 5vw, 4.15rem);
-      line-height: 0.98;
-    }
-  }
-
-  @media (min-width: 900px) {
-    #heroTitle {
-      max-width: 12ch;
-      font-size: clamp(3rem, 4vw, 4.25rem);
-    }
-  }
-`;
-document.head.appendChild(launchFixes);
-
 const screens = ["home", "events", "submit", "media", "connect"];
 const nav = document.querySelector(".bottom-nav");
 const indicator = document.querySelector(".nav-indicator");
