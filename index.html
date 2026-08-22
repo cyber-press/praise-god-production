@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#2a1035" />
+    <meta name="description" content="Praise God Productions creates faith-centered concerts, films, theatre, workshops, comedy, and artist opportunities." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Praise God" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta property="og:title" content="Praise God Productions" />
+    <meta property="og:description" content="Faith-centered creative productions, artist submissions, events, media, and community connection." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/public/icons/icon.svg" />
+    <title>Praise God Productions</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/public/icons/icon-192.svg" />
+    <link rel="icon" href="/public/icons/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/styles.css" />
+  </head>
+  <body>
+    <div id="splash" class="splash" aria-hidden="true">
+      <div class="splash-mark">PG</div>
+      <strong>Praise God Productions</strong>
+      <span>Faith - Creativity - Purpose</span>
+    </div>
+
+    <main class="device-shell" aria-label="Praise God Productions app">
+      <header class="app-header">
+        <button class="icon-button" id="installBtn" type="button" aria-label="Install app" title="Install app">
+          <span aria-hidden="true">+</span>
+        </button>
+        <a class="brand" href="#home" aria-label="Praise God Productions home">
+          <span class="brand-mark">PG</span>
+          <span>
+            <strong>Praise God</strong>
+            <small>Productions</small>
+          </span>
+        </a>
+        <a class="icon-button" href="tel:+18055006860" aria-label="Call Praise God Productions" title="Call">
+          <span aria-hidden="true">☎</span>
+        </a>
+      </header>
+
+      <section class="screen-stack" aria-live="polite">
+        <article class="screen is-active" id="screen-home" data-screen="home">
+          <div class="hero">
+            <img class="hero-art" data-asset="flyer" src="/public/icons/icon.svg" alt="Praise God Productions campaign artwork" />
+            <div class="hero-copy">
+              <p class="eyebrow">Faith-centered creative community</p>
+              <h1>Creativity with a calling.</h1>
+              <p>Praise God Productions creates stages, stories, and moments where gifted artists can share purpose with excellence.</p>
+              <div class="hero-actions">
+                <button class="primary-action" data-go="submit" type="button">Submit Talent</button>
+                <button class="secondary-action" data-go="events" type="button">Explore Events</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="quick-grid">
+            <button data-go="events" type="button">
+              <strong>Upcoming</strong>
+              <span>Concerts, workshops, and productions</span>
+            </button>
+            <button data-go="media" type="button">
+              <strong>Media</strong>
+              <span>Campaign visuals and gallery moments</span>
+            </button>
+            <button data-go="connect" type="button">
+              <strong>Connect</strong>
+              <span>Call, email, or scan the campaign QR</span>
+            </button>
+          </div>
+        </article>
+
+        <article class="screen" id="screen-events" data-screen="events">
+          <div class="section-heading">
+            <p class="eyebrow">Upcoming experiences</p>
+            <h2>Gatherings built for worship, talent, and community.</h2>
+          </div>
+          <div class="event-rail" tabindex="0" aria-label="Upcoming event cards">
+            <section class="event-card">
+              <span>Concert</span>
+              <h3>Praise Night Showcase</h3>
+              <p>Artist lineup and venue details coming soon.</p>
+              <button data-go="connect" type="button">Get Updates</button>
+            </section>
+            <section class="event-card accent">
+              <span>Workshop</span>
+              <h3>Creative Calling Lab</h3>
+              <p>Training for performers, storytellers, hosts, and creators.</p>
+              <button data-go="submit" type="button">Join Interest List</button>
+            </section>
+            <section class="event-card teal">
+              <span>Production</span>
+              <h3>Faith Story Sessions</h3>
+              <p>Film, theatre, and testimony-driven media opportunities.</p>
+              <button data-go="media" type="button">View Media</button>
+            </section>
+          </div>
+          <div class="production-tabs" role="tablist" aria-label="Production categories">
+            <button class="is-selected" role="tab" aria-selected="true" data-production="concerts" type="button">Concerts</button>
+            <button role="tab" aria-selected="false" data-production="film" type="button">Film</button>
+            <button role="tab" aria-selected="false" data-production="theatre" type="button">Theatre</button>
+            <button role="tab" aria-selected="false" data-production="training" type="button">Training</button>
+            <button role="tab" aria-selected="false" data-production="comedy" type="button">Comedy</button>
+          </div>
+          <section class="detail-panel" id="productionDetail" aria-live="polite"></section>
+        </article>
+
+        <article class="screen" id="screen-submit" data-screen="submit">
+          <div class="section-heading">
+            <p class="eyebrow">Artist submission</p>
+            <h2>Bring your gift into the room.</h2>
+          </div>
+          <form class="submit-form" id="talentForm">
+            <label>
+              Name
+              <input name="name" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input name="email" type="email" autocomplete="email" required />
+            </label>
+            <label>
+              Creative discipline
+              <select name="discipline" required>
+                <option value="">Choose one</option>
+                <option>Singer / musician</option>
+                <option>Actor / theatre</option>
+                <option>Film / media</option>
+                <option>Comedy</option>
+                <option>Speaker / host</option>
+                <option>Production support</option>
+              </select>
+            </label>
+            <label>
+              Portfolio or social link
+              <input name="portfolio" type="url" placeholder="https://" />
+            </label>
+            <label>
+              Tell us about your calling
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+            <button class="primary-action full" type="submit">Prepare Submission Email</button>
+            <p class="form-note" id="formNote" role="status"></p>
+          </form>
+        </article>
+
+        <article class="screen" id="screen-media" data-screen="media">
+          <div class="section-heading">
+            <p class="eyebrow">Media</p>
+            <h2>Campaign visuals ready for the next stage.</h2>
+          </div>
+          <div class="gallery">
+            <button class="gallery-card tall" type="button" data-lightbox-asset="flyer">
+              <img data-asset="flyer" src="/public/icons/icon.svg" alt="Praise God Productions flyer artwork" />
+              <span>Campaign flyer</span>
+            </button>
+            <button class="gallery-card" type="button" data-lightbox-asset="qr">
+              <img data-asset="qr" src="/public/icons/icon.svg" alt="Praise God Productions QR artwork" />
+              <span>QR campaign</span>
+            </button>
+            <section class="quote-card">
+              <p>"A platform for artists to walk boldly in faith, purpose, and excellence."</p>
+              <span>Preview community voice</span>
+            </section>
+          </div>
+        </article>
+
+        <article class="screen" id="screen-connect" data-screen="connect">
+          <div class="section-heading">
+            <p class="eyebrow">Connect</p>
+            <h2>Reach Tracy and stay close to the movement.</h2>
+          </div>
+          <div class="contact-actions">
+            <a href="tel:+18055006860">Call +1 805-500-6860</a>
+            <a href="mailto:PraiseGodProduction101@gmail.com">Email PraiseGodProduction101@gmail.com</a>
+          </div>
+          <div class="qr-panel">
+            <img data-asset="qr" src="/public/icons/icon.svg" alt="Praise God Productions QR code" />
+            <div>
+              <h3>Scan the campaign QR</h3>
+              <p>Use the QR artwork for flyers, event tables, social stories, and live audience follow-up.</p>
+            </div>
+          </div>
+          <form class="submit-form compact" id="inquiryForm">
+            <label>
+              Name
+              <input name="name" autocomplete="name" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button class="secondary-action full" type="submit">Prepare Inquiry</button>
+          </form>
+        </article>
+      </section>
+
+      <nav class="bottom-nav" aria-label="App screens">
+        <span class="nav-indicator" aria-hidden="true"></span>
+        <button class="is-active" data-tab="home" type="button">Home</button>
+        <button data-tab="events" type="button">Events</button>
+        <button class="submit-tab" data-tab="submit" type="button">Submit</button>
+        <button data-tab="media" type="button">Media</button>
+        <button data-tab="connect" type="button">Connect</button>
+      </nav>
+    </main>
+
+    <dialog class="install-sheet" id="installSheet">
+      <form method="dialog">
+        <h2>Install Praise God</h2>
+        <p id="installCopy">Use your browser menu to add this app to your home screen.</p>
+        <button class="primary-action full" id="nativeInstall" type="button">Install App</button>
+        <button class="secondary-action full" value="cancel">Close</button>
+      </form>
+    </dialog>
+
+    <dialog class="lightbox" id="lightbox">
+      <button type="button" aria-label="Close media preview">×</button>
+      <img alt="" />
+    </dialog>
+
+    <script src="/src/app.js" type="module"></script>
+  </body>
+</html>

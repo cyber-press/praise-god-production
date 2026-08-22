@@ -1,0 +1,17 @@
+{
+  "buildId": "pgp-pwa-v4-codex-20260822",
+  "summary": "True screen-based mobile/tablet PWA for Praise God Productions.",
+  "screens": ["home", "events", "submit", "media", "connect"],
+  "features": [
+    "animated tab navigation",
+    "install-to-home-screen support",
+    "manifest.webmanifest",
+    "service worker",
+    "offline fallback",
+    "splash transition",
+    "app icons",
+    "embedded optimized flyer and QR campaign assets",
+    "artist submission email workflow",
+    "mobile/tablet-only centered shell"
+  ]
+}
