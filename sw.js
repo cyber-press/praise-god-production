@@ -1,4 +1,4 @@
-const CACHE_NAME = "praise-god-productions-v4-1";
+const CACHE_NAME = "praise-god-productions-v4-1-2";
 const APP_SHELL = [
   "/",
   "/index.html",
@@ -19,40 +19,57 @@ self.addEventListener("install", (event) => {
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+    caches.keys().then((keys) =>
+      Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+    )
   );
   self.clients.claim();
 });
 
+async function networkFirst(request) {
+  try {
+    const response = await fetch(request, { cache: "no-store" });
+    if (response.ok && response.type !== "opaque") {
+      const copy = response.clone();
+      caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+    }
+    return response;
+  } catch {
+    return (await caches.match(request)) || (await caches.match("/offline.html"));
+  }
+}
+
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
 
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      fetch(event.request)
-        .then((response) => {
-          if (response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-          }
-          return response;
-        })
-        .catch(async () => (await caches.match(event.request)) || (await caches.match("/")) || caches.match("/offline.html"))
-    );
+  const isNavigation = event.request.mode === "navigate";
+  const isAppCode =
+    url.pathname === "/src/styles.css" ||
+    url.pathname === "/src/app.js" ||
+    url.pathname === "/manifest.webmanifest";
+
+  if (isNavigation || isAppCode) {
+    event.respondWith(networkFirst(event.request));
     return;
   }
 
   event.respondWith(
     caches.match(event.request).then(async (cached) => {
       if (cached) return cached;
-      const response = await fetch(event.request);
-      if (response.ok && response.type !== "opaque") {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+
+      try {
+        const response = await fetch(event.request);
+        if (response.ok && response.type !== "opaque") {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+        }
+        return response;
+      } catch {
+        return caches.match("/offline.html");
       }
-      return response;
     })
   );
 });
