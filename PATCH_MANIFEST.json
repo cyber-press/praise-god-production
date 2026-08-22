@@ -1,17 +1,33 @@
 {
-  "buildId": "pgp-pwa-v4-codex-20260822",
-  "summary": "True screen-based mobile/tablet PWA for Praise God Productions.",
+  "buildId": "pgp-pwa-v4.1-repo-audit-20260821",
+  "summary": "GitHub source audited and aligned with the V4.1 launch-hardened mobile/tablet PWA baseline.",
   "screens": ["home", "events", "submit", "media", "connect"],
-  "features": [
-    "animated tab navigation",
-    "install-to-home-screen support",
-    "manifest.webmanifest",
-    "service worker",
-    "offline fallback",
-    "splash transition",
-    "app icons",
-    "embedded optimized flyer and QR campaign assets",
-    "artist submission email workflow",
-    "mobile/tablet-only centered shell"
-  ]
+  "changes": [
+    "production canonical and Open Graph URL",
+    "V4.1 PWA manifest metadata and app shortcuts",
+    "tablet orientation support and 1024px intentional app ceiling",
+    "offline status banner and hardened service-worker navigation fallback",
+    "iPhone/iPad safe-area handling",
+    "44px minimum touch targets and visible keyboard focus",
+    "native email and URL form validation with status feedback",
+    "Escape-key dialog dismissal",
+    "appinstalled state handling",
+    "rotating hero messaging and pager controls",
+    "home production explorer, vision card, and install card",
+    "three-card upcoming events stack and notification CTA",
+    "artist submission progress and privacy notice",
+    "expanded media gallery and preview testimonial carousel",
+    "contact email capture and brand promise",
+    "reduced-motion support retained"
+  ],
+  "verification": {
+    "required": [
+      "npm run build",
+      "mobile and tablet screen QA",
+      "Android install test",
+      "iPhone/iPad Add to Home Screen test",
+      "offline fallback test",
+      "form validation and mailto handoff test"
+    ]
+  }
 }
