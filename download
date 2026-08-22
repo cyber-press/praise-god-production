@@ -1,9 +1,0 @@
-dist/
-node_modules/
-.env
-.env.local
-.DS_Store
-Thumbs.db
-outputs/
-work/
-public/assets/*.png
